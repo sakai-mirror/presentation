@@ -3,9 +3,9 @@
 <project>
 	<pomVersion>3</pomVersion>
 	<extend>../../master/project.xml</extend>
-	<name>IMS Proxy Component</name>
+	<name>Presentation Component</name>
 	<groupId>sakaiproject</groupId>
-	<id>sakai-imsproxy-component</id>
+	<id>sakai-present-component</id>
 	<currentVersion>${sakai.version}</currentVersion>
 	<organization>
 		<name>Sakai Project</name>
@@ -20,282 +20,30 @@
 
 	<dependencies>
 
+		<!-- our plugin so we can run maven from this directory for testing -->
+		<dependency>
+			<groupId>sakaiproject</groupId>
+			<artifactId>sakai</artifactId>
+			<version>${sakai.plugin.version}</version>
+			<type>plugin</type>
+		</dependency>
+
 		<!-- Our jar of api implemenntations -->
 		<dependency>
 			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-imsproxy-api-impl</artifactId>
+			<artifactId>sakai-present-api-impl</artifactId>
 			<version>${sakai.version}</version>
 			<properties>
 				<war.bundle>true</war.bundle>
 			</properties>
 		</dependency>
-		
-		<!-- Other Dependencies - Make sure to clean up -->
-		
-		
-		<!-- Access the IMSProxy service interfaces.  -->
+
 		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-imsproxy-api</artifactId>
-			<type>jar</type>
-			<version>${sakai.version}</version>
+			<groupId>OKI</groupId>
+			<artifactId>OkiOSID</artifactId>
+			<version>2.0</version>
+			<url>http://sourceforge.net/projects/okiproject</url>
 		</dependency>
-		
-		<!-- AXIS -->
-		<dependency>
-			<groupId>axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>1.1</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>axis</groupId>
-			<artifactId>axis-ant</artifactId>
-			<version>1.1</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>axis</groupId>
-			<artifactId>axis-jaxrpc</artifactId>
-			<version>1.1</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>axis</groupId>
-			<artifactId>axis-saaj</artifactId>
-			<version>1.1</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>axis</groupId>
-			<artifactId>axis-wsdl4j</artifactId>
-			<version>1.1</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-        
-        <!--Commons jars-->
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.7.0</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.1</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>commons-digester</groupId>
-			<artifactId>commons-digester</artifactId>
-			<version>1.6</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-			
-		<dependency>
-			<groupId>commons-discovery</groupId>
-			<artifactId>commons-discovery</artifactId>
-			<version>0.2</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-			
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.0</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.0.4</version>
-        </dependency>
-        
-        <!-- 	
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.0</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		-->
-		
-		<!-- DOM4J -->
-		<dependency>
-			<groupId>dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>1.4</version>
-		</dependency>
-		
-		<!-- JavaMail -->
-		<dependency>
-			<groupId>javamail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-		
-		<!-- log4j -->
-		<!-- 
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.8</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		-->
-		
-		<!-- Sakai Maven plugin permitting Maven to be executed locally -->
-		<dependency>
-		    <groupId>sakaiproject</groupId>
-		    <artifactId>sakai</artifactId>
-		    <version>${sakai.plugin.version}</version>
-		    <type>plugin</type>
-		</dependency>
-		
-		<!-- Sakai Service APIs -->	
-        <dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-component</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-		
-		<!-- TODO Gradebook require service injection -->
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-gradebook-service</artifactId>
-			<version>${sakai.version}</version>
-			<properties>
-				<deploy.target>shared</deploy.target>
-			</properties>
-		</dependency>
-		
-		<!-- Removed no need for impl 
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-gradebook-component</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-		-->
-		
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-id</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-legacy-service</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-		
-		<dependency>
-                <groupId>sakaiproject</groupId>
-                <artifactId>sakai-legacy-util</artifactId>
-                <version>${sakai.version}</version>
-        </dependency>
-        
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-session</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-			
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-tool</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-			
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-tool-registration</artifactId>
-			<version>${sakai.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-util-text</artifactId>
-			<version>${sakai.version}</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-util-web</artifactId>
-			<version>${sakai.version}</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<!-- Xerces -->
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xerces</artifactId>
-			<version>2.4.0</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.6.2</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-			
-		<!-- XML-apis -->	
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>2.0.2</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
-		<!-- XML-Security -->	
-		<dependency>
-			<groupId>xml-security</groupId>
-			<artifactId>xmlsec</artifactId>
-			<version>1.1.0</version>
-			<properties>
-				<war.bundle>true</war.bundle>
-			</properties>
-		</dependency>
-		
 
 	</dependencies>
 
