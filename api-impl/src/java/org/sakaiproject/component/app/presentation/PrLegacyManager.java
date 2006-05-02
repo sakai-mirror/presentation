@@ -1,23 +1,21 @@
 /**********************************************************************************
  * $URL$
  * $Id$
- **********************************************************************************
+ ***********************************************************************************
  *
- * Copyright (c) 2003, 2004, 2005 The Regents of the University of Michigan, Trustees of Indiana University,
- *                  Board of Trustees of the Leland Stanford, Jr., University, and The MIT Corporation
+ * Copyright (c) 2004, 2005, 2006 The Sakai Foundation.
  * 
- * Licensed under the Educational Community License Version 1.0 (the "License");
- * By obtaining, using and/or copying this Original Work, you agree that you have read,
- * understand, and will comply with the terms and conditions of the Educational Community License.
- * You may obtain a copy of the License at:
+ * Licensed under the Educational Community License, Version 1.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at
  * 
- *      http://cvs.sakaiproject.org/licenses/license_1_0.html
+ *      http://www.opensource.org/licenses/ecl1.php
  * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
- * AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
  *
  **********************************************************************************/
 
@@ -39,19 +37,20 @@ import org.osid.id.IdManager;
 import org.osid.shared.Id;
 import org.sakaiproject.api.app.presentation.Presentation;
 import org.sakaiproject.api.app.presentation.Slide;
-import org.sakaiproject.exception.EmptyException;
+import org.sakaiproject.content.api.ContentCollection;
+import org.sakaiproject.content.api.ContentCollectionEdit;
+import org.sakaiproject.content.cover.ContentHostingService;
+import org.sakaiproject.entity.api.Entity;
+import org.sakaiproject.entity.api.EntityPropertyNotDefinedException;
+import org.sakaiproject.entity.api.EntityPropertyTypeException;
+import org.sakaiproject.entity.api.ResourceProperties;
+import org.sakaiproject.entity.api.ResourcePropertiesEdit;
 import org.sakaiproject.exception.IdUnusedException;
 import org.sakaiproject.exception.InUseException;
 import org.sakaiproject.exception.PermissionException;
 import org.sakaiproject.exception.TypeException;
-import org.sakaiproject.service.framework.portal.cover.PortalService;
-import org.sakaiproject.service.legacy.content.ContentCollection;
-import org.sakaiproject.service.legacy.content.ContentCollectionEdit;
-import org.sakaiproject.service.legacy.content.cover.ContentHostingService;
-import org.sakaiproject.service.legacy.entity.Entity;
-import org.sakaiproject.service.legacy.entity.ResourceProperties;
-import org.sakaiproject.service.legacy.entity.ResourcePropertiesEdit;
-import org.sakaiproject.service.legacy.time.Time;
+import org.sakaiproject.time.api.Time;
+import org.sakaiproject.tool.cover.ToolManager;
 
 /**
  *
@@ -99,7 +98,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
      */
     private String getContext()
     {
-    		String retval = PortalService.getCurrentSiteId();
+    		String retval = ToolManager.getCurrentPlacement().getContext();
 	    // System.out.println("Context="+retval);
 	    return retval;
     }
@@ -249,14 +248,19 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     			// System.out.println("Returning "+retval);
     			return retval;
     		}
-    		catch (EmptyException e)
+    		catch (EntityPropertyNotDefinedException e)
     		{
-    			// System.out.println("EmptyException.");
+    			// System.out.println("EntityPropertyNotDefinedException.");
     			return null;
     		}
         	catch (IdUnusedException e)
     		{
     			// System.out.println("IdUnusedException.");
+    			return null;
+    		}
+    		catch (EntityPropertyTypeException e)
+    		{
+    			// System.out.println("TypeException.");
     			return null;
     		}
     		catch (TypeException e)
@@ -291,14 +295,14 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     			// System.out.println("Returning "+retval);
     			return retval;
     		}
-    		catch (EmptyException e)
+    		catch (EntityPropertyNotDefinedException e)
     		{
-    			// System.out.println("EmptyException.");
+    			// System.out.println("EntityPropertyNotDefinedException.");
     			return null;
     		}
-      	catch (TypeException e)
+    		catch (EntityPropertyTypeException e)
     		{
-    			// System.out.println("TypeException.");
+    			// System.out.println("EntityPropertyNotDefinedException.");
     			return null;
     		}
     }
@@ -472,13 +476,13 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 			int retval = (int) longval;
 			return retval;
 		}
-		catch (EmptyException e)
+		catch (EntityPropertyNotDefinedException e)
 		{
 			// Normal path
-			// System.out.println("EmptyException.");
+			// System.out.println("EntityPropertyNotDefinedException.");
 			return -1;
 		}   	
-		catch (TypeException e)
+		catch (EntityPropertyTypeException e)
 		{
 			// System.out.println("TypeException.");
 			return -1;
@@ -522,6 +526,10 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 		{
 			// System.out.println("IdUnusedException.");
 		}
+		catch (EntityPropertyTypeException e)
+		{
+			// System.out.println("TypeException.");
+		}
 		catch (TypeException e)
 		{
 			// System.out.println("TypeException.");
@@ -534,9 +542,9 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 		{
 			// System.out.println("InUseException");
 		}    		
-		catch (EmptyException e)
+		catch (EntityPropertyNotDefinedException e)
 		{
-			// System.out.println("EmptyException");
+			// System.out.println("EntityPropertyNotDefinedException");
 		}
 		return false;
     }
@@ -561,7 +569,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 		List newMembers = collection.getMemberResources ();
 		// String sortedBy = ResourceProperties.PROP_DISPLAY_NAME;
 		String sortedBy = ResourceProperties.PROP_MODIFIED_DATE;
-		Collections.sort (newMembers, new ContentHostingComparator (sortedBy, false));
+		Collections.sort (newMembers, ContentHostingService.newContentHostingComparator (sortedBy, false));
 		int size = newMembers.size();
 		Hashtable moreMembers = new Hashtable();
 		// System.out.println("Size: "+size);
@@ -581,14 +589,14 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 				}
 
 			}
-			catch (TypeException e)
+			catch (EntityPropertyTypeException e)
 			{
 				// System.out.println("TypeException.");
 				continue;
 			} 
-			catch (EmptyException e) 
+			catch (EntityPropertyNotDefinedException e) 
 			{
-				// System.out.println("EmptyException");
+				// System.out.println("EntityPropertyNotDefinedException");
 				continue;
 			}
 		}
@@ -618,7 +626,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
    			List colMembers = collection.getMemberResources ();
 
 			String sortedBy = ResourceProperties.PROP_DISPLAY_NAME;
-			Collections.sort (colMembers, new ContentHostingComparator (sortedBy, true));
+			Collections.sort (colMembers, ContentHostingService.newContentHostingComparator (sortedBy, true));
 			// System.out.println("Sorted...");
 		    int colsize = colMembers.size();
 		    // System.out.println("Sub coll size "+colsize);

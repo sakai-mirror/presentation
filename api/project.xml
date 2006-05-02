@@ -35,10 +35,9 @@
                         <url>http://sourceforge.net/projects/okiproject</url>
                 </dependency>
 
-                <!-- to be able to access Sakai Services -->
                 <dependency>
                         <groupId>sakaiproject</groupId>
-                        <artifactId>sakai-legacy-service</artifactId>
+                        <artifactId>sakai-util-api</artifactId>
                         <version>${sakai.version}</version>
                 </dependency>
 

@@ -28,10 +28,27 @@
                         <type>plugin</type>
                 </dependency>
 
-		<!-- to be able to access the IdManager interface -->
 		<dependency>
 			<groupId>sakaiproject</groupId>
-			<artifactId>sakai-legacy-service</artifactId>
+			<artifactId>sakai-util-api</artifactId>
+			<version>${sakai.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>sakaiproject</groupId>
+			<artifactId>sakai-content-api</artifactId>
+			<version>${sakai.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>sakaiproject</groupId>
+			<artifactId>sakai-entity-api</artifactId>
+			<version>${sakai.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>sakaiproject</groupId>
+			<artifactId>sakai-tool-api</artifactId>
 			<version>${sakai.version}</version>
 		</dependency>
 
@@ -51,14 +68,7 @@
                         <url>http://sourceforge.net/projects/okiproject</url>
                 </dependency>
 
-                <!-- to be able to access the Sakai utilitiy classes -->
-                <dependency>
-                        <groupId>sakaiproject</groupId>
-                        <artifactId>sakai-legacy-util</artifactId>
-                        <version>${sakai.version}</version>
-                </dependency>
-
-	</dependencies>
+ 	</dependencies>
 
 	<build>
 
