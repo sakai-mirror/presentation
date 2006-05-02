@@ -23,20 +23,14 @@ package org.sakaiproject.api.app.presentation;
 
 import java.util.List;
 
-import org.osid.id.IdManager;
 import org.sakaiproject.exception.IdUnusedException;
 import org.sakaiproject.exception.PermissionException;
 import org.sakaiproject.exception.TypeException;
 
 /**
  * @author Mark Norton
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface PresentationManager {
-    IdManager getIdManager();
-    void setIdManager (IdManager im);
 
     public boolean allowUpdate(Presentation pres);
 
@@ -132,16 +126,9 @@ public interface PresentationManager {
      * Get a Sakai reference to a particular presentation - returns null on 
      * any type of failure.
      *
-     *  @author Charles Severance;
+     *  @author Charles Severance
      */
     public String getReference(Presentation pres);
 
     public void clearPresentationCache();
 }
-
-/**********************************************************************************
-*
-* $Footer:  $
-*
-***********************************************************************************/
-

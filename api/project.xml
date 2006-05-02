@@ -2,9 +2,9 @@
 <project>
 	<pomVersion>3</pomVersion>
 	<extend>../../master/project.xml</extend>
-	<name>Presentation Service API</name>
+	<name>sakai-presentation-api</name>
 	<groupId>sakaiproject</groupId>
-	<id>sakai-present-api</id>
+	<id>sakai-presentation-api</id>
 	<currentVersion>${sakai.version}</currentVersion>
 	<organization>
 		<name>Sakai Project</name>
