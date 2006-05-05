@@ -17,17 +17,33 @@
 				value="#{msgs.pt_help_button}" />
 		</sakai:tool_bar>
             	<sakai:messages />
+						<f:verbatim>
+							<h3>
+						</f:verbatim>
+						<h:outputText value="#{msgs.pt_presentation_groupbox}" />
+						<f:verbatim>
+							</h3>
+						</f:verbatim>
+            	
              <sakai:instruction_message value="#{PresentationTool.instructionMessage}"/>
 			<%-- the list of presentations --%>
-			<sakai:flat_list value="#{PresentationTool.presentations}" var="pres">
-				<h:column>	<%--  The title column.  --%>
+			<sakai:flat_list value="#{PresentationTool.presentations}" var="pres" styleClass="listHier lines nolines" columnClasses="nil,itemAction,nil,nil" summary="#{msgs.pt_presentation_list_summary}">
+				<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{msgs.pt_col_head_title}" />
 					</f:facet>
-					<sakai:doc_section>
+					<f:verbatim>
+						<h4>
+					</f:verbatim>
 						<h:outputText value="#{pres.title}"/>
-					</sakai:doc_section>
-					<sakai:doc_section>
+					<f:verbatim>
+						</h4>
+					</f:verbatim>
+				</h:column>
+				<h:column>
+				<f:facet name="header">
+						<h:outputText value=" " />
+					</f:facet>
 						<h:commandLink action="#{pres.processActionListView}">
 							<h:outputText value="#{msgs.pt_link_view}"/>
 						</h:commandLink>
@@ -39,9 +55,8 @@
 						<h:commandLink action="#{pres.processActionListJoin}">
 							<h:outputText value="#{msgs.pt_link_join}" rendered="#{pres.showing}" />
 						</h:commandLink>
-					</sakai:doc_section>
 				</h:column>
-				<h:column>	<%--  The title column.  --%>
+				<h:column>	<%--  The slide number column.  --%>
 					<f:facet name="header">
 						<h:outputText value="#{msgs.pt_col_head_slides}" />
 					</f:facet>
