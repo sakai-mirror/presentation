@@ -6,7 +6,7 @@
             <value>presentation_main</value>
         </property>
         <property name="name">
-            <value>Presentation Tool</value>
+            <value>Presentation Overview</value>
         </property>
         <property name="location">
             <value>/sakai_presentation/main.htm</value>
@@ -23,7 +23,7 @@
                 <bean id="presentationCategory" class="org.sakaiproject.component.app.help.model.CategoryBean">
  
                     <property name="name">
-                        <value>Pesentation Tool</value>
+                        <value>Presentation</value>
                     </property>
                     <property name="resources">
                         <list>
