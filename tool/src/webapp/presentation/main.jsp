@@ -12,9 +12,6 @@
 			<sakai:tool_bar_item
 				action="#{PresentationTool.processActionRefreshPresentations}"
 				value="#{msgs.pt_refresh_button}" />
-			<sakai:tool_bar_item
-				action="#{PresentationTool.processActionHelp}"
-				value="#{msgs.pt_help_button}" />
 		</sakai:tool_bar>
             	<sakai:messages />
 						<f:verbatim>

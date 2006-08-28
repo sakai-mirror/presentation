@@ -516,7 +516,7 @@ public class PresentationTool
 
 		if (currentPresentation != null) return currentMode;
 
-		if (!newMode.equals("main") && !newMode.equals("help"))
+		if (!newMode.equals("main"))
 		{
 			msg = getMsgFromBundle("pt_presentation_isNull");
 			setInstructionMessage(msg);
@@ -577,17 +577,6 @@ public class PresentationTool
 	{
 		preAction();
 		return currentMode;
-	}
-
-	/**
-	 * Process the "Help" action. This causes the active show to end.
-	 * 
-	 * @return the navigation outcome.
-	 */
-	public String processActionHelp()
-	{
-		preAction();
-		return switchMode("help");
 	}
 
 	/**
