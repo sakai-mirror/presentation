@@ -3,7 +3,7 @@
         <tool
                         id="sakai.presentation"
                         title="Presentation"
-                        description="Presentation tool.">
+                        description="For showing and viewing slideshows of image collections from Resources.">
                 <category name="course" />
                 <category name="project" />
 
