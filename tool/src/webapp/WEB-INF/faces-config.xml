@@ -60,12 +60,6 @@
           </navigation-case>
 
           <navigation-case>
-            <from-outcome>help</from-outcome>
-            <to-view-id>/presentation/help.jsp</to-view-id>
-            <redirect/>
-          </navigation-case>
-
-          <navigation-case>
             <from-outcome>join</from-outcome>
             <to-view-id>/presentation/join.jsp</to-view-id>
             <redirect/>
