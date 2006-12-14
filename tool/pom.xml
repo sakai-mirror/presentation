@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>sakai-jsf-sun-ri-tool</artifactId>
+    <groupId>org.sakaiproject</groupId>
+    <version>M2</version>
+    <relativePath>../../master/pom.xml</relativePath>
+  </parent>
+  <name>sakai-presentation-tool</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-presentation-tool</artifactId>
+  <organization>
+    <name>Sakai Project</name>
+    <url>http://www.sakaiproject.org/</url>
+  </organization>
+  <inceptionYear>2005</inceptionYear>
+  <packaging>war</packaging>
+  <dependencies>
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-jsf-sun-ri-tool</artifactId>
+      <version>${sakai.version}</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+<!-- to be able to use the Presentation Service APIs -->
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-presentation-api</artifactId>
+      <version>${sakai.version}</version>
+      <scope>provided</scope>
+    </dependency>
+<!-- for our OKI APIs -->
+    <dependency>
+      
+      <groupId>OKI</groupId>
+      <artifactId>OkiOSID</artifactId>
+      <version>2.0</version>
+<!--url: http://sourceforge.net/projects/okiproject -->
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-util-api</artifactId>
+      <version>${sakai.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-tool-api</artifactId>
+      <version>${sakai.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-courier-api</artifactId>
+      <version>${sakai.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-courier-util</artifactId>
+      <version>${sakai.version}</version>
+    </dependency>
+    <dependency>
+      
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-util</artifactId>
+      <version>${sakai.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    
+    
+    
+    
+    
+    
+    <resources>
+      <resource>
+        <directory>${basedir}/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+<!-- java source -->
+    
+<!-- other resources for the jar - the message bundles -->
+  </build>
+</project>
