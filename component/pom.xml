@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>master</artifactId>
+    <artifactId>presentation-base</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>M2</version>
-    <relativePath>../../master/pom.xml</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <name>sakai-presentation-pack</name>
   <groupId>org.sakaiproject</groupId>
@@ -20,23 +20,13 @@
     <deploy.target>components</deploy.target>
   </properties>
   <dependencies>
-<!-- our plugin so we can run maven from this directory for testing -->
-<!-- Our jar of api implemenntations -->
     <dependency>
-      
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-presentation-impl</artifactId>
       <version>${sakai.version}</version>
     </dependency>
   </dependencies>
   <build>
-    
-    
-    
-    
-    
-    
     <resources/>
-    
   </build>
 </project>

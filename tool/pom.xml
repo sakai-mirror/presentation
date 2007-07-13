@@ -5,7 +5,7 @@
     <artifactId>sakai-jsf-sun-ri-tool</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>M2</version>
-    <relativePath>../../master/jsf-sun-tool/pom.xml</relativePath>
+    <relativePath>../jsf-sun-tool/pom.xml</relativePath>
   </parent>
   <name>sakai-presentation-tool</name>
   <groupId>org.sakaiproject</groupId>
@@ -19,44 +19,33 @@
   <dependencies>
 <!-- to be able to use the Presentation Service APIs -->
     <dependency>
-      
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-presentation-api</artifactId>
       <version>${sakai.version}</version>
-      <scope>provided</scope>
     </dependency>
 <!-- for our OKI APIs -->
     <dependency>
-      
       <groupId>OKI</groupId>
       <artifactId>OkiOSID</artifactId>
       <version>2.0</version>
 <!--url: http://sourceforge.net/projects/okiproject -->
-      <scope>provided</scope>
     </dependency>
     <dependency>
-      
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-util-api</artifactId>
       <version>${sakai.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
-      
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-tool-api</artifactId>
       <version>${sakai.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
-      
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-courier-api</artifactId>
       <version>${sakai.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
-      
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-courier-util</artifactId>
       <version>${sakai.version}</version>
@@ -70,16 +59,9 @@
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.0.4</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>
-    
-    
-    
-    
-    
-    
     <resources>
       <resource>
         <directory>${basedir}/src/bundle</directory>
@@ -89,7 +71,6 @@
       </resource>
     </resources>
 <!-- java source -->
-    
 <!-- other resources for the jar - the message bundles -->
   </build>
 </project>
