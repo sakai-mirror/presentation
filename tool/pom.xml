@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>sakai-jsf-sun-ri-tool</artifactId>
+    <artifactId>presentation-base</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>M2</version>
-    <relativePath>../jsf-sun-tool/pom.xml</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <name>sakai-presentation-tool</name>
   <groupId>org.sakaiproject</groupId>
@@ -17,6 +17,12 @@
   <inceptionYear>2005</inceptionYear>
   <packaging>war</packaging>
   <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-jsf-sun-ri-tool</artifactId>
+      <version>${sakai.version}</version>
+      <type>pom</type>
+    </dependency>
 <!-- to be able to use the Presentation Service APIs -->
     <dependency>
       <groupId>org.sakaiproject</groupId>
