@@ -30,12 +30,6 @@
 			<value>#{Components["org.sakaiproject.api.app.presentation.PresentationManager"]}</value>
 		</managed-property>
 
-		<managed-property>
-			<description>Service Dependency: Id Manager</description>
-			<property-name>idMgr</property-name>
-			<value>#{Components["org.osid.id.IdManager"]}</value>
-		</managed-property>
-
 	</managed-bean>
 
         <navigation-rule>

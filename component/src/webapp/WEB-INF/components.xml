@@ -7,7 +7,6 @@
 	<bean id="org.sakaiproject.api.app.presentation.PresentationManager"
 			class="org.sakaiproject.component.app.presentation.PrLegacyManager"
 			singleton="true">
-		<property name="idManager"><ref bean="org.osid.id.IdManager"/></property>
 	</bean>
 
 </beans>

@@ -172,7 +172,7 @@ public class CacheMap {
         
         if (expired)
         {
-            	Object removed = m_map.remove(key);
+            	m_map.remove(key);
         		m_queue.remove(key);
         }
         return expired;
@@ -266,7 +266,7 @@ public class CacheMap {
              // If we are too large, simply expire the top entry
              if ( m_queue.size() >= m_cacheSize ) 
              {
-         			Object entry = m_map.remove(topEntry);
+         			m_map.remove(topEntry);
          			m_queue.remove(topEntry);
          			// if ( m_debug ) System.out.println(toString()+" List length exceeded "+m_cacheSize);
              }

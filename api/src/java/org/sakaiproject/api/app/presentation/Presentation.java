@@ -28,8 +28,6 @@
 package org.sakaiproject.api.app.presentation;
 import java.util.List;
 
-import org.osid.shared.Id;
-
 /**
  *  The Presentation class allows content to be grouped together in a ordered, linear sequence.
  *  In addition to the list of content slides, a wait slide may be included to be displayed
@@ -48,14 +46,14 @@ public interface Presentation extends java.io.Serializable {
      *
      *  @author Mark Norton
      */
-    public Id getId();
+    public String getId();
 
     /**
      *  Set the Id of this presentation.
      *
      *  @author Mark Norton
      */
-        public void setId (Id id);
+        public void setId (String id);
 
         public String getTitle ();
 

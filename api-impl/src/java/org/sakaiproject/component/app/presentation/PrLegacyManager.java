@@ -28,13 +28,10 @@
 package org.sakaiproject.component.app.presentation;
 
 import java.util.Collections;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
-import org.osid.id.IdManager;
-import org.osid.shared.Id;
 import org.sakaiproject.api.app.presentation.Presentation;
 import org.sakaiproject.api.app.presentation.Slide;
 import org.sakaiproject.content.api.ContentCollection;
@@ -63,24 +60,8 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 	
 	public static final String PROP_PRESENT_CURRENT_SLIDE = "Presentation:Current-Slide-Id";
 
-	/*  Service Dependency:  IdManager.  */
-    protected IdManager idManager = null;
-
     /*	Service Dependency:  Logger - eventually this will be the Sakai Logger.  */
     public static Logger logger = null;
-
-    /**
-     * Dependency injection of IdManager.
-     *
-     *  @author Mark Norton
-     */
-    public IdManager getIdManager() {
-        return this.idManager;
-    }
-
-    public void setIdManager(IdManager im) {
-        this.idManager = im;
-    }
     
     /** Clear out any cached presentations 
      * 
@@ -151,7 +132,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 		
 		try 
 		{ 
-			presId = pres.getId().getIdString(); 
+			presId = pres.getId(); 
 		} 
 		catch(Throwable t) 
 		{
@@ -497,7 +478,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     		// System.out.println("setCurrentSlideProperty slideno="+slideno+" id="+presId);
     		try
 		{
-			ContentCollection collection = ContentHostingService.getCollection(presId);
+//			ContentCollection collection = ContentHostingService.getCollection(presId);
 					
 			ContentCollectionEdit cedit = null;
 			ResourcePropertiesEdit pedit = null;
@@ -557,7 +538,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     public List getPresentations() 
     		throws IdUnusedException, TypeException, PermissionException
 	{
-    		String context = getContext();
+//    		String context = getContext();
     		
     		List presentations = new Vector();
        	String home = getHomeCollection();
@@ -571,7 +552,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 		String sortedBy = ResourceProperties.PROP_MODIFIED_DATE;
 		Collections.sort (newMembers, ContentHostingService.newContentHostingComparator (sortedBy, false));
 		int size = newMembers.size();
-		Hashtable moreMembers = new Hashtable();
+//		Hashtable moreMembers = new Hashtable();
 		// System.out.println("Size: "+size);
 		for (int i = 0; i< size; i++)
 		{		
@@ -610,8 +591,8 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     private Presentation loadPresentation(String presId) {
 		// System.out.println("loadPresentaton:"+presId);
 
-		Id id = null;
-    		try { id = this.idManager.getId(presId);  } catch (Throwable t) {return null;}
+    	String id = null;
+    		try { id = presId;  } catch (Throwable t) {return null;}
         Presentation pres = null;
    		try
 		{

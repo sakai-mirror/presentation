@@ -29,14 +29,13 @@ import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.osid.id.IdManager;
-import org.osid.shared.Id;
 import org.sakaiproject.api.app.presentation.Presentation;
 import org.sakaiproject.api.app.presentation.PresentationManager;
 import org.sakaiproject.api.app.presentation.Slide;
 import org.sakaiproject.exception.IdUnusedException;
 import org.sakaiproject.exception.PermissionException;
 import org.sakaiproject.exception.TypeException;
+import org.sakaiproject.id.api.IdManager;
 import org.sakaiproject.tool.api.Placement;
 import org.sakaiproject.tool.cover.ToolManager;
 import org.sakaiproject.util.EventObservingCourier;
@@ -54,9 +53,6 @@ import com.sun.faces.util.MessageFactory;
  */
 public class PresentationTool
 {
-	/** Service Dependency: IdManager. */
-	protected IdManager idMgr = null;
-
 	/** Service Dependency: Logger - eventually this will be the Sakai logger. */
 	protected Logger logger = null;
 
@@ -64,7 +60,7 @@ public class PresentationTool
 	protected PresentationManager prMgr = null;
 
 	/** Private properties. */
-	protected Id id = null; // Id test field. No longer used.
+	protected String id = null; // Id test field. No longer used.
 
 	/** A list (PresentationView) of presentations to be displayed. */
 	protected List presentations = null;
@@ -311,23 +307,6 @@ public class PresentationTool
 
 		EventObservingCourier observer = new EventObservingCourier(location, elementId, pattern);
 		return observer;
-	}
-
-	/**
-	 * Return the IdManager service.
-	 */
-	public IdManager getIdMgr()
-	{
-		return this.idMgr;
-	}
-
-	/**
-	 * Set the IdManager service.
-	 */
-	public void setIdMgr(IdManager mgr)
-	{
-		// System.out.println("Presentation Tool Injected Id manager " + mgr);
-		this.idMgr = mgr;
 	}
 
 	/**

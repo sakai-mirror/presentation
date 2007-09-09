@@ -29,7 +29,6 @@ package org.sakaiproject.component.app.presentation;
 import java.util.List;
 import java.util.Vector;
 
-import org.osid.shared.Id;
 import org.sakaiproject.api.app.presentation.Slide;
 import org.sakaiproject.time.api.Time;
 
@@ -39,24 +38,24 @@ import org.sakaiproject.time.api.Time;
  * @author  Mark Norton
  */
 public class PrPresentation implements org.sakaiproject.api.app.presentation.Presentation {
-    private Id id = null;   //  The Id of this presentation.
+    private String id = null;   //  The Id of this presentation.
     private String title = null;
     private List slides = new Vector();       //  The ordered set of slides in this presentation.
     private Time modificationTime = null;
     
     /** Creates a new instance of Presentation */
-    public PrPresentation(Id id) {
+    public PrPresentation(String id) {
         this.id = id;
     }
 
     /** Creates a new instances of Presentation given a list of slides.  */
-    public PrPresentation(Id id, List slides) {
+    public PrPresentation(String id, List slides) {
         this.id = id;
         if (slides != null)
         	this.slides = slides;
     }
 
-    public PrPresentation (Id id, List slides, String title, Time time) {
+    public PrPresentation (String id, List slides, String title, Time time) {
 		this.id = id;
 		if (slides != null)
 			this.slides = slides;
@@ -69,7 +68,7 @@ public class PrPresentation implements org.sakaiproject.api.app.presentation.Pre
      *
      *  @author Mark Norton
      */
-    public Id getId()  {
+    public String getId()  {
         return this.id;
     }
 
@@ -78,7 +77,7 @@ public class PrPresentation implements org.sakaiproject.api.app.presentation.Pre
      *
      *  @author Mark Norton
      */
-    public void setId (Id id)  {
+    public void setId (String id)  {
         this.id = id;
     }
 	
