@@ -357,7 +357,7 @@ public class PresentationTool
 			logInfo(msg);
 			return null;
 		}
-		if (currentMode.equals("view"))
+		if ("view".equals(currentMode))
 		{
 			int maxSlide = currentPresentation.getSlideCount();
 			if (currentSlidePos > (maxSlide - 1)) currentSlidePos = maxSlide - 1;
@@ -438,7 +438,7 @@ public class PresentationTool
 		}
 
 		int maxSlide = currentPresentation.getSlideCount();
-		if (currentMode.equals("view"))
+		if ("view".equals(currentMode))
 		{
 			if (currentSlidePos > (maxSlide - 1)) currentSlidePos = maxSlide - 1;
 			if (currentSlidePos < 0) currentSlidePos = 0;
@@ -474,7 +474,7 @@ public class PresentationTool
 		// If Switching into join mode with a valid presentation, set up an observer
 		// to watch for the changes
 
-		if (newMode.equals("join") && !currentMode.equals("join") && currentPresentation != null)
+		if ("join".equals(newMode) && !"join".equals(currentMode) && currentPresentation != null)
 		{
 			// System.out.println("Switching into join mode");
 			String pattern = prMgr.getReference(currentPresentation);
@@ -486,7 +486,7 @@ public class PresentationTool
 		// Switch modes
 		currentMode = newMode;
 
-		if (!currentMode.equals("join") && m_observer != null)
+		if (!"join".equals(currentMode) && m_observer != null)
 		{
 			// System.out.println("Turning off observer="+m_observer);
 			m_observer.disable();
@@ -495,7 +495,7 @@ public class PresentationTool
 
 		if (currentPresentation != null) return currentMode;
 
-		if (!newMode.equals("main"))
+		if (!"main".equals(newMode))
 		{
 			msg = getMsgFromBundle("pt_presentation_isNull");
 			setInstructionMessage(msg);
@@ -604,7 +604,7 @@ public class PresentationTool
 			return retval;
 		}
 
-		if (currentMode.equals("view"))
+		if ("view".equals(currentMode))
 		{
 			currentSlidePos++;
 			int maxSlide = currentPresentation.getSlideCount();
@@ -637,7 +637,7 @@ public class PresentationTool
 			return retval;
 		}
 
-		if (currentMode.equals("view"))
+		if ("view".equals(currentMode))
 		{
 			currentSlidePos--;
 			int maxSlide = currentPresentation.getSlideCount();
