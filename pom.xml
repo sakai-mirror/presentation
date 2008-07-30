@@ -11,14 +11,11 @@
   <groupId>org.sakaiproject</groupId>
   <artifactId>presentation-base</artifactId>
   <packaging>pom</packaging>
-  
   <scm>
     <connection>scm:svn:https://source.sakaiproject.org/svn/presentation/trunk</connection>
     <developerConnection>scm:svn:https://source.sakaiproject.org/svn/presentation/trunk</developerConnection>
     <url>https://source.sakaiproject.org/svn/presentation/trunk</url>
   </scm>
-  
-
   <modules>
     <module>api</module>
     <module>api-impl</module>

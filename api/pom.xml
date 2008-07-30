@@ -20,12 +20,12 @@
     <deploy.target>shared</deploy.target>
   </properties>
   <dependencies>
-<!-- our plugin so we can run maven from this directory for testing -->
     <dependency>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>sakai-util-api</artifactId>
-      <version>${sakai.version}</version>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
     </dependency>
+<!-- our plugin so we can run maven from this directory for testing -->
+<!--org.sakaiprojectsakai-util-api${sakai.version}-->
   </dependencies>
   <build>
     <resources/>
