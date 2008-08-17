@@ -32,7 +32,7 @@
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-presentation-api</artifactId>
-      <version>${sakai.version}</version>
+
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>

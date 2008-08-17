@@ -23,4 +23,24 @@
     <module>help</module>
     <module>tool</module>
   </modules>
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-presentation-impl</artifactId>
+      <version>2.6.0RC1-SNAPSHOT</version>
+    </dependency>
+   <dependency>
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-courier-util</artifactId>
+      <version>2.6.0RC1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-jsf-sun-ri-tool</artifactId>
+      <version>2.6.0RC1-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
 </project>

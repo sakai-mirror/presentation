@@ -28,26 +28,26 @@
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-jsf-sun-ri-tool</artifactId>
-      <version>${sakai.version}</version>
+
       <type>pom</type>
     </dependency>
 <!-- to be able to use the Presentation Service APIs -->
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-presentation-api</artifactId>
-      <version>${sakai.version}</version>
+
     </dependency>
 <!--org.sakaiprojectsakai-util-api${sakai.version}-->
 <!--org.sakaiprojectsakai-tool-api${sakai.version}-->
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-courier-api</artifactId>
-      <version>${sakai.version}</version>
+
     </dependency>
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-courier-util</artifactId>
-      <version>${sakai.version}</version>
+
     </dependency>
 <!--org.sakaiprojectsakai-util${sakai.version}-->
     <dependency>
