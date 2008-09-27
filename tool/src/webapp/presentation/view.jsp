@@ -31,6 +31,7 @@
 			/>
 		</sakai:tool_bar>
             	<sakai:messages />
+             		<h4><h:outputText value="#{PresentationTool.slide.displayName}" /></h4>
              <sakai:instruction_message value="#{PresentationTool.instructionMessage}"/>
 			<h:graphicImage value="#{PresentationTool.slide.url}" />
 	</h:form>

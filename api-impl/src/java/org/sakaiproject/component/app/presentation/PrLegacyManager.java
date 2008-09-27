@@ -617,8 +617,9 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 				Entity subResource = (Entity) colMembers.get(j);
 				// System.out.println("   Next ID = "+subResource.getId());
 				// System.out.println("   Next URL = "+subResource.getUrl());	
-				
-	    			String slideName = "Slide Name";
+
+				ResourceProperties resP = subResource.getProperties();
+	    			String slideName = (String) resP.get(resP.getNamePropDescription());
 	    			String slideType = "SlideType";
 	    			String slideUrl = subResource.getUrl();
 	    		
