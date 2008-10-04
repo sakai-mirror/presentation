@@ -26,11 +26,14 @@
 				value="Watching slide: #{PresentationTool.showPosition}" 
 			/>
 		</sakai:tool_bar>
-         <sakai:messages />
-         <sakai:instruction_message value="#{PresentationTool.instructionMessage}"/>
-		<h:graphicImage value="#{PresentationTool.slide.url}" />
+                <sakai:messages />
+                <sakai:instruction_message value="#{PresentationTool.instructionMessage}"/>
+                <f:verbatim>
+                       <iframe src="${PresentationTool.slide.url}" width="100%" height="1200px">
+                       </iframe>
+                </f:verbatim>
 	</h:form>
-	<sakai:courier refresh="5"/>
+<sakai:courier refresh="5"/>
 </sakai:view_content>
 </sakai:view_container>
 </f:view>
