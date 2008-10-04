@@ -33,9 +33,12 @@
 			/>
 		</sakai:tool_bar>
             	<sakai:messages />
-             		<h4><h:outputText value="#{PresentationTool.slide.displayName}" /></h4>
-             <sakai:instruction_message value="#{PresentationTool.instructionMessage}"/>
-			<h:graphicImage value="#{PresentationTool.slide.url}" />
+             	<h4><h:outputText value="#{PresentationTool.slide.displayName}" /></h4>
+		<sakai:instruction_message value="#{PresentationTool.instructionMessage}"/>
+                <f:verbatim>
+                     <iframe src="${PresentationTool.slide.url}" width="100%" height="1200px">
+                     </iframe>
+                </f:verbatim>
 	</h:form>
 </sakai:view_content>
 </sakai:view_container>
