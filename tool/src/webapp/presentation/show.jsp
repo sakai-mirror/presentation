@@ -16,9 +16,11 @@
 				value="#{msgs.pt_stop_button}" />
 			<sakai:tool_bar_item
 				action="#{PresentationTool.processActionPrevious}"
+                                disabled="#{not PresentationTool.hasPrevious}"
 				value="#{msgs.pt_previous_button}" />
 			<sakai:tool_bar_item
 				action="#{PresentationTool.processActionNext}"
+                                disabled="#{not PresentationTool.hasNext}"
 				value="#{msgs.pt_next_button}" />
 			<sakai:tool_bar_spacer />
 			<sakai:tool_bar_item

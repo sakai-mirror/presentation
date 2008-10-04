@@ -405,6 +405,31 @@ public class PresentationTool
 		return currentPresentation.getSlideCount();
 	}
 
+	public boolean getHasNext()
+	{
+		if (currentPresentation == null) return false;
+		int maxSlide = currentPresentation.getSlideCount();
+ 		return (getCurrentSlideNumber() < (maxSlide - 1));
+	}
+
+	public boolean getHasPrevious()
+	{
+		if (currentPresentation == null) return false;
+		return ( getCurrentSlideNumber() > 0 ) ;
+	}
+
+	private int getCurrentSlideNumber()
+        {
+                if ("view".equals(currentMode))
+                {
+			return currentSlidePos;
+                }
+                else
+                { // For join and show
+                        return prMgr.getCurrentSlideNumber(currentPresentation);
+                }
+	}
+
 	/**
 	 * Return a string indicating the current show position as an example: "1 of 5" the expectation is that there will be a message like Viewing: 1 of 5 Viewing: No current presentation
 	 * 
