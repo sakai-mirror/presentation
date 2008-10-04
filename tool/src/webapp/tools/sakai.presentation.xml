@@ -2,7 +2,7 @@
 <registration>
         <tool
                         id="sakai.presentation"
-                        title="Presentation"
+                        title="Presentations"
                         description="For showing and viewing slideshows of image collections from Resources.">
                 <category name="course" />
                 <category name="project" />
