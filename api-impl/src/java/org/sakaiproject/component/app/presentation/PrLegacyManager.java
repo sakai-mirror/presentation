@@ -32,11 +32,12 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import org.sakaiproject.component.cover.ComponentManager;
 import org.sakaiproject.api.app.presentation.Presentation;
 import org.sakaiproject.api.app.presentation.Slide;
 import org.sakaiproject.content.api.ContentCollection;
 import org.sakaiproject.content.api.ContentCollectionEdit;
-import org.sakaiproject.content.cover.ContentHostingService;
+import org.sakaiproject.content.api.ContentHostingService;
 import org.sakaiproject.entity.api.Entity;
 import org.sakaiproject.entity.api.EntityPropertyNotDefinedException;
 import org.sakaiproject.entity.api.EntityPropertyTypeException;
@@ -58,11 +59,23 @@ import org.sakaiproject.tool.cover.ToolManager;
  */
 public class PrLegacyManager implements org.sakaiproject.api.app.presentation.PresentationManager {
 	
-	public static final String PROP_PRESENT_CURRENT_SLIDE = "Presentation:Current-Slide-Id";
+    public static final String PROP_PRESENT_CURRENT_SLIDE = "Presentation:Current-Slide-Id";
+
+    private static ContentHostingService m_instance = null;
 
     /*	Service Dependency:  Logger - eventually this will be the Sakai Logger.  */
     public static Logger logger = null;
     
+    public ContentHostingService contentHostingService()
+    {
+        if (m_instance == null)
+        {
+           m_instance = (ContentHostingService) ComponentManager
+                                                .get(ContentHostingService.class);
+        }
+        return m_instance;
+    }
+
     /** Clear out any cached presentations 
      * 
      * @author Charles Severance
@@ -89,7 +102,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
      */
     private String getHomeCollection()
     {
-       	String retval = ContentHostingService.getSiteCollection(getContext());
+       	String retval = contentHostingService().getSiteCollection(getContext());
        	// System.out.println("Home Collection = "+retval);
        	return retval;
     }
@@ -100,7 +113,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     		// System.out.println("Home Collection = "+homeCollection);
     		if ( homeCollection == null ) return null;
     		
-    		String refString = ContentHostingService.getReference(homeCollection);
+    		String refString = contentHostingService().getReference(homeCollection);
     		// System.out.println("RefString="+refString);
     		return refString;
     	}
@@ -111,7 +124,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     		// System.out.println("Presentation Id = "+presId);
     		if ( presId == null ) return null;
     		
-    		String refString = ContentHostingService.getReference(presId);
+    		String refString = contentHostingService().getReference(presId);
     		// System.out.println("RefString="+refString);
     		return refString;
     	}
@@ -154,7 +167,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 		String presId = getPresentationIdString(pres);
 		if ( presId == null ) return false;
 		
-		retval = ContentHostingService.allowUpdateCollection(presId);
+		retval = contentHostingService().allowUpdateCollection(presId);
 		
 		// System.out.println("allowUpdate:"+presId+" returns "+retval);
     		return retval;
@@ -170,7 +183,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
         	try
     		{
        		// System.out.println("getModificationDate:"+presId);
-       		ContentCollection collection = ContentHostingService.getCollection(presId);
+       		ContentCollection collection = contentHostingService().getCollection(presId);
     			
        		if ( collection == null ) return null;
        		return getTitle(collection);
@@ -220,7 +233,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
         	try
     		{
        		// System.out.println("getModificationDate:"+presId);
-       		ContentCollection collection = ContentHostingService.getCollection(presId);
+       		ContentCollection collection = contentHostingService().getCollection(presId);
     			
        		if ( collection == null ) return null;
 			
@@ -423,7 +436,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
        	try
 		{
    			// System.out.println("getCurrentSlideProperty:"+presId);
-   			ContentCollection collection = ContentHostingService.getCollection(presId);
+   			ContentCollection collection = contentHostingService().getCollection(presId);
 			
    			return getCurrentSlideProperty(collection);
 		}
@@ -478,13 +491,13 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     		// System.out.println("setCurrentSlideProperty slideno="+slideno+" id="+presId);
     		try
 		{
-//			ContentCollection collection = ContentHostingService.getCollection(presId);
+//			ContentCollection collection = contentHostingService().getCollection(presId);
 					
 			ContentCollectionEdit cedit = null;
 			ResourcePropertiesEdit pedit = null;
-			if (ContentHostingService.getProperties(presId).getBooleanProperty(ResourceProperties.PROP_IS_COLLECTION))
+			if (contentHostingService().getProperties(presId).getBooleanProperty(ResourceProperties.PROP_IS_COLLECTION))
 			{
-				cedit = ContentHostingService.editCollection(presId);
+				cedit = contentHostingService().editCollection(presId);
 				pedit = cedit.getPropertiesEdit();
 			}
 			else
@@ -499,7 +512,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
 			{
 				pedit.addProperty (PROP_PRESENT_CURRENT_SLIDE, ""+slideno);
 			}
-			ContentHostingService.commitCollection(cedit);
+			contentHostingService().commitCollection(cedit);
 			// System.out.println("Commit Happenned");
 			return true;
 		}
@@ -546,11 +559,11 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
     	    
 		// Get the collection and throw an exception upwards if there is a problem
 		// System.out.println("Getting Presentations From:"+collectionId);
-		ContentCollection collection = ContentHostingService.getCollection(collectionId);
+		ContentCollection collection = contentHostingService().getCollection(collectionId);
 		List newMembers = collection.getMemberResources ();
 		// String sortedBy = ResourceProperties.PROP_DISPLAY_NAME;
 		String sortedBy = ResourceProperties.PROP_MODIFIED_DATE;
-		Collections.sort (newMembers, ContentHostingService.newContentHostingComparator (sortedBy, false));
+		Collections.sort (newMembers, contentHostingService().newContentHostingComparator (sortedBy, false));
 		int size = newMembers.size();
 //		Hashtable moreMembers = new Hashtable();
 		// System.out.println("Size: "+size);
@@ -596,7 +609,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
         Presentation pres = null;
    		try
 		{
-			ContentCollection collection = ContentHostingService.getCollection(presId);
+			ContentCollection collection = contentHostingService().getCollection(presId);
 	
    			List slides = null;
    			String title = getTitle(collection);
@@ -607,7 +620,7 @@ public class PrLegacyManager implements org.sakaiproject.api.app.presentation.Pr
    			List colMembers = collection.getMemberResources ();
 
 			String sortedBy = ResourceProperties.PROP_DISPLAY_NAME;
-			Collections.sort (colMembers, ContentHostingService.newContentHostingComparator (sortedBy, true));
+			Collections.sort (colMembers, contentHostingService().newContentHostingComparator (sortedBy, true));
 			// System.out.println("Sorted...");
 		    int colsize = colMembers.size();
 		    // System.out.println("Sub coll size "+colsize);
