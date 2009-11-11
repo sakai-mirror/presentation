@@ -25,21 +25,15 @@
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-kernel-api</artifactId>
     </dependency>
-<!--
-      This has been relocated to sakai-kernel-util
-      org.sakaiproject.kernel.utilsakai-util-->
     <dependency>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>sakai-jsf-sun-ri-tool</artifactId>
+      <groupId>org.sakaiproject.jsf</groupId>
+      <artifactId>jsf-tool-sun</artifactId>
       <type>pom</type>
     </dependency>
-<!-- to be able to use the Presentation Service APIs -->
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-presentation-api</artifactId>
     </dependency>
-<!--org.sakaiprojectsakai-util-api${sakai.version}-->
-<!--org.sakaiprojectsakai-tool-api${sakai.version}-->
     <dependency>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-courier-api</artifactId>
