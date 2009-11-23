@@ -4,12 +4,6 @@
   <projects>
     <project>sakai-courier-api</project>
     <project>sakai-courier-util</project>
-    <project>sakai-depend-jsf-widgets-sun</project>
-    <project>sakai-jsf-app</project>
-    <project>sakai-jsf-sun-ri-tool</project>
-    <project>sakai-jsf-tool</project>
-    <project>sakai-jsf-widgets</project>
-    <project>sakai-jsf-widgets-sun</project>
     <project>sakai-presentation-api</project>
   </projects>
   <buildSpec>
