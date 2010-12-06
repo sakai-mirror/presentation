@@ -41,6 +41,11 @@
         <version>${sakai.jsf.version}</version>
         <type>pom</type>
       </dependency>
+      <dependency>
+	<groupId>org.sakaiproject</groupId>
+	<artifactId>sakai-presentation-api</artifactId>
+	<version>${project.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
